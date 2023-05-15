@@ -69,7 +69,6 @@ function clean_str($str) {
 <body>
 	<center><h1><?php echo $site_title ?></h1></center>
 	<hr>
-	<center><small>Basic HTML Google News for vintage computers. Built by <a href="https://youtube.com/ActionRetro" target="_blank"><b>Action Retro</b></a> on YouTube. Tested on Netscape 1.1 through 4 on a Mac SE/30.</small></center>
 	<?php
 	if($section) {
 		$section_title = explode(" - ", strtoupper($feed->get_title()));
@@ -105,6 +104,5 @@ function clean_str($str) {
 			<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
  
 	<?php endforeach; ?>
-	<p><center><small>v1.0 Powered by Mozilla Readability (Andres Rey PHP Port) and SimplePie</small><center></p>
 </body>
 </html>

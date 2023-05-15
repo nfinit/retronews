@@ -20,12 +20,10 @@ if( isset( $_GET['loc'] ) ) {
     <center><h1><?php echo $site_title ?></h1></center>
     <hr>
     <center>
-    <small>Basic HTML Google News for vintage computers. Built by <a href="https://youtube.com/ActionRetro" target="_blank"><b>Action Retro</b></a> on YouTube. Tested on Netscape 1.1 through 4 on a Mac SE/30.</small>
     <p><h2>CHOOSE YOUR EDITION:</h2></p>
     <p><a href='index.php?section=nation&loc=US'>United States</a></p>
     <p><a href='index.php?section=nation&loc=JP'>Japan</a></p>
     <p><a href='index.php?section=nation&loc=UK'>United Kingdom</a></p>
-    <p>Spain (RIP)</p>
     <p><a href='index.php?section=nation&loc=CA'>Canada</a></p>
     <p><a href='index.php?section=nation&loc=DE'>Deutschland</a></p>
     <p><a href='index.php?section=nation&loc=IT'>Italia</a></p>
@@ -52,6 +50,5 @@ if( isset( $_GET['loc'] ) ) {
     <p><a href='index.php?section=nation&loc=PK'>Pakistan</a></p>
     </center>
     <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?>front page</a></small>
-	<p><center><small>Powered by Mozilla Readability (Andres Rey PHP Port) and SimplePie</small></p>
 </body>
 </html>
