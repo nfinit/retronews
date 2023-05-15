@@ -7,6 +7,7 @@ if(array_key_exists('query', $any_params)) {
 }
 
 require_once('vendor/autoload.php');
+require_once('config.php');
 
 $section="";
 $loc = "US";
@@ -34,6 +35,10 @@ $feed = new SimplePie();
  
 // Set the feed to process.
 $feed->set_feed_url($feed_url);
+
+// Initialize and set feed cache directory
+if (!is_dir('cache')) { mkdir('cache', 0755, true); }
+$feed->set_cache_location('cache');
  
 // Run SimplePie.
 $feed->init();
@@ -59,10 +64,10 @@ function clean_str($str) {
 
 <html>
 <head>
-	<title>68k.news: Headlines From the Future</title>
+	<title><?php echo $site_name ?></title>
 </head>
 <body>
-	<center><h1><b>68k.news:</b> <font color="#9400d3"><i>Headlines from the Future</i></font></h1></center>
+	<center><h1><?php echo $site_title ?></h1></center>
 	<hr>
 	<center><small>Basic HTML Google News for vintage computers. Built by <a href="https://youtube.com/ActionRetro" target="_blank"><b>Action Retro</b></a> on YouTube. Tested on Netscape 1.1 through 4 on a Mac SE/30.</small></center>
 	<?php
