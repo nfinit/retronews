@@ -39,8 +39,8 @@
  <body">
     <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="/index.php"><font color="#9400d3">68k.news</font> front page</a></small>
     <p><small><b>Viewing image:</b> <?php echo $url ?></small></p>
-    <img src="/image_compressed.php?i=<?php echo $url; ?>">
+    <img src="image_compressed.php?i=<?php echo $url; ?>">
     <br><br>
-    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="/index.php"><font color="#9400d3">68k.news</font> front page</a></small>
+    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="index.php"><font color="#9400d3">68k.news</font> front page</a></small>
  </body>
  </html>

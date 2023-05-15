@@ -6,8 +6,7 @@ if(array_key_exists('query', $any_params)) {
     header("X-Robots-Tag: noindex, nofollow", true);
 }
 
-//require_once('php/autoloader.php');
-require_once('vendor/SimplePie.compiled.php');
+require_once('vendor/autoload.php');
 
 $section="";
 $loc = "US";

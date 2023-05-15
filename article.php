@@ -75,7 +75,7 @@ function clean_str($str) {
      <title><?php echo $readability->getTitle();?></title>
  </head>
  <body>
-    <small><a href="/index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
+    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
     <h1><?php echo clean_str($readability->getTitle());?></h1>
     <p><small><a href="<?php echo $article_url ?>" target="_blank">Original source</a> (on modern site) <?php
         $img_num = 0;
@@ -93,6 +93,6 @@ function clean_str($str) {
     ?></small></p>
     <?php if($error_text) { echo "<p><font color='red'>" . $error_text . "</font></p>"; } ?>
     <p><font size="4"><?php echo $readable_article;?></font></p>
-    <small><a href="/index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
+    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
  </body>
  </html>
