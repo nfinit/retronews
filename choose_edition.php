@@ -1,5 +1,7 @@
 <?php
 
+require_once('config.php');
+
 $loc = "US";
 
 if( isset( $_GET['loc'] ) ) {
@@ -12,10 +14,10 @@ if( isset( $_GET['loc'] ) ) {
 
 <html>
 <head>
-	<title>68k.news: Choose Your Edition</title>
+	<title><?php echo $site_name ?> (Choose edition)</title>
 </head>
 <body>
-    <center><h1><b>68k.news:</b> <font color="#9400d3"><i>Headlines from the Future</i></font></h1></center>
+    <center><h1><?php echo $site_title ?></h1></center>
     <hr>
     <center>
     <small>Basic HTML Google News for vintage computers. Built by <a href="https://youtube.com/ActionRetro" target="_blank"><b>Action Retro</b></a> on YouTube. Tested on Netscape 1.1 through 4 on a Mac SE/30.</small>
