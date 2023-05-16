@@ -1,24 +1,23 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
+
 header("X-Robots-Tag: noindex, nofollow", true);
+
 require_once('vendor/autoload.php');
+require_once('config.php');
+require_once('modules.php');
+require_once('functions.php');
 
 $article_url = "";
 $article_html = "";
 $error_text = "";
 $loc = "US";
 
-if( isset( $_GET['loc'] ) ) {
-    $loc = strtoupper($_GET["loc"]);
-}
-
-if( isset( $_GET['a'] ) ) {
-    $article_url = $_GET["a"];
-} else {
+if( isset( $_GET['loc'] ) ) { $loc = strtoupper($_GET["loc"]); }
+if( isset( $_GET['a'] ) ) { $article_url = $_GET["a"]; } else {
     echo "What do you think you're doing... >:(";
     exit();
 }
-
 if (substr( $article_url, 0, 23 ) != "https://news.google.com") {
     echo("That's not news :(");
     die();
@@ -56,26 +55,18 @@ try {
     $error_text .= 'Sorry - working on it! ' . $e->getMessage() . '<br>';
 }
 
-//replace chars that old machines probably can't handle
-function clean_str($str) {
-    $str = str_replace( "‘", "'", $str );    
-    $str = str_replace( "’", "'", $str );  
-    $str = str_replace( "“", '"', $str ); 
-    $str = str_replace( "”", '"', $str );
-    $str = str_replace( "–", '-', $str );
-
-    return $str;
-}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 2.0//EN">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- 
- <html>
- <head>
-     <title><?php echo $readability->getTitle();?></title>
- </head>
- <body>
-    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
+<html>
+<head>
+  <title><?php echo $readability->getTitle() . " (" . $site_name . ")"; ?></title>
+  <?php echo $metadata ?>
+  <style><!--
+  <?php echo $base_style ?>
+  //--></style>
+</head>
+<body>
+    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <?php echo $loc ?> index</a></small>
     <h1><?php echo clean_str($readability->getTitle());?></h1>
     <p><small><a href="<?php echo $article_url ?>" target="_blank">Original source</a> (on modern site) <?php
         $img_num = 0;
@@ -93,6 +84,6 @@ function clean_str($str) {
     ?></small></p>
     <?php if($error_text) { echo "<p><font color='red'>" . $error_text . "</font></p>"; } ?>
     <p><font size="4"><?php echo $readable_article;?></font></p>
-    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?> front page</a></small>
+    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <?php echo $loc ?> index</a></small>
  </body>
  </html>

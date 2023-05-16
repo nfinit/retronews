@@ -10,7 +10,7 @@ $header = "
   <hr>
 ";
 // Standard footer
-$generated_date = date("Y-m-d H:i:s");
+$generated_date = date("j F Y, g:i a");
 $system_hostname = gethostname();
 $footer = "
   <hr>

@@ -40,7 +40,7 @@ $feed->handle_content_type(); // make sure content is sent properly
 	<title><?php echo $site_name ?></title>
   <?php echo $metadata ?>
   <style><!--
-  <?php echo $base_style  ?>
+  <?php echo $base_style ?>
   //--></style>
 </head>
 <body>
@@ -53,9 +53,19 @@ $feed->handle_content_type(); // make sure content is sent properly
 	?>
 	<small>
 	<p>
-	<center><a href="index.php?loc=<?php echo $loc ?>">TOP</a> <a href="index.php?section=world&loc=<?php echo strtoupper($loc) ?>">WORLD</a> <a href="index.php?section=nation&loc=<?php echo strtoupper($loc) ?>">NATION</a> <a href="index.php?section=business&loc=<?php echo strtoupper($loc) ?>">BUSINESS</a> <a href="index.php?section=technology&loc=<?php echo strtoupper($loc) ?>">TECHNOLOGY</a> <a href="index.php?section=entertainment&loc=<?php echo strtoupper($loc) ?>">ENTERTAINMENT</a> <a href="index.php?section=sports&loc=<?php echo strtoupper($loc) ?>">SPORTS</a> <a href="index.php?section=science&loc=<?php echo strtoupper($loc) ?>">SCIENCE</a> <a href="index.php?section=health&loc=<?php echo strtoupper($loc) ?>">HEALTH</a><br>
-	<font size="1">-=-=-=-=-=-=-=-=-=-=-=-=-=-</font>
-	<br><?php echo strtoupper($loc) ?> Edition <a href="choose_edition.php">(Change)</a></center>
+	<center>
+    <a href="index.php?loc=<?php echo $loc ?>">TOP</a> 
+    <a href="index.php?section=world&loc=<?php echo strtoupper($loc) ?>">WORLD</a> 
+    <a href="index.php?section=nation&loc=<?php echo strtoupper($loc) ?>">NATION</a> 
+    <a href="index.php?section=business&loc=<?php echo strtoupper($loc) ?>">BUSINESS</a> 
+    <a href="index.php?section=technology&loc=<?php echo strtoupper($loc) ?>">TECHNOLOGY</a> 
+    <a href="index.php?section=entertainment&loc=<?php echo strtoupper($loc) ?>">ENTERTAINMENT</a> 
+    <a href="index.php?section=sports&loc=<?php echo strtoupper($loc) ?>">SPORTS</a> 
+    <a href="index.php?section=science&loc=<?php echo strtoupper($loc) ?>">SCIENCE</a> 
+    <a href="index.php?section=health&loc=<?php echo strtoupper($loc) ?>">HEALTH</a><br>
+	  <font size="1">-=-=-=-=-=-=-=-=-=-=-=-=-=-</font>
+	  <br><?php echo strtoupper($loc) ?> Edition <a href="choose_edition.php">(Change)</a>
+  </center>
 	</p>
 	</small>
 	<?php
@@ -77,7 +87,7 @@ $feed->handle_content_type(); // make sure content is sent properly
 			$cleaned_links = str_replace( "View Full Coverage on Google News", "", $cleaned_links);
             echo $cleaned_links;
             ?></p>
-			<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
+			<p><small><?php echo $item->get_date('j F Y, g:i a'); ?></small></p>
  
 	<?php endforeach; ?>
   <?php echo $footer ?>

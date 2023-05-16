@@ -1,5 +1,5 @@
 <?php
-  $site_name  = "News portal";
+  $site_name  = "Localnet News Portal";
   $site_title = $site_name;
   $base_style = "
   a             { color: RoyalBlue;    }
@@ -9,7 +9,7 @@
   a:hover   img { border: 0;           }
   a:visited img { border: 0;           }
   
-  body { background-color: white;}
+  body { background-color: white; }
   span { display: inline-block; }
   
   .no-border { border: none; }
