@@ -66,24 +66,28 @@ try {
   //--></style>
 </head>
 <body>
-    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <?php echo $loc ?> index</a></small>
-    <h1><?php echo clean_str($readability->getTitle());?></h1>
-    <p><small><a href="<?php echo $article_url ?>" target="_blank">Original source</a> (on modern site) <?php
-        $img_num = 0;
-        $imgline_html = "| Article images:";
-        foreach ($readability->getImages() as $image_url):
-            //we can only do png and jpg
-            if (strpos($image_url, ".jpg") || strpos($image_url, ".jpeg") || strpos($image_url, ".png") === true) {
-                $img_num++;
-                $imgline_html .= " <a href='image.php?loc=" . $loc . "&i=" . $image_url . "'>[$img_num]</a> ";
-            }
-        endforeach;
-        if($img_num>0) {
-            echo  $imgline_html ;
-        }
-    ?></small></p>
+  <small><?php echo $site_name ?> | <a href="index.php?loc=<?php echo $loc ?>"><?php echo $loc ?></a></small>
+  <hr>
+  <h1><?php echo clean_str($readability->getTitle());?></h1>
+  <p><small><a href="<?php echo $article_url ?>" target="_blank">Original source</a>
+  <?php
+     $img_num = 0;
+     $imgline_html = "| Article images:";
+     foreach ($readability->getImages() as $image_url):
+       //we can only do png and jpg
+       if (strpos($image_url, ".jpg") || strpos($image_url, ".jpeg") || strpos($image_url, ".png") === true) {
+         $img_num++;
+         $imgline_html .= " <a href='image.php?loc=" . $loc . "&i=" . $image_url . "'>[$img_num]</a> ";
+       }
+     endforeach;
+     if($img_num>0) {
+       echo  $imgline_html ;
+     }
+   ?></small></p>
     <?php if($error_text) { echo "<p><font color='red'>" . $error_text . "</font></p>"; } ?>
     <p><font size="4"><?php echo $readable_article;?></font></p>
-    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <?php echo $loc ?> index</a></small>
+    <hr>
+    <small><?php echo $site_name ?> | <a href="index.php?loc=<?php echo $loc ?>"><?php echo $loc ?></a></small>
+    <?php echo $footer ?>
  </body>
  </html>

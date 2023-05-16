@@ -1,6 +1,7 @@
 <?php
 
     require_once('config.php');
+    require_once('modules.php');
 
     header("X-Robots-Tag: noindex, nofollow", true);
     $url = "";
@@ -35,15 +36,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
  
  
- <html>
- <head>
-     <title><?php echo $site_name . ' (Image Viewer)' ?></title>
- </head>
- <body>
-    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="index.php">Front page</a></small>
-    <p><small><b>Viewing image:</b> <?php echo $url ?></small></p>
+<html>
+<head>
+  <title><?php echo $site_name . ' (Image Viewer)' ?></title>
+  <?php echo $metadata ?>
+  <style><!--
+  <?php echo $base_style ?>
+  //--></style>    
+</head>
+<body><center>
     <img src="image_compressed.php?i=<?php echo $url; ?>">
-    <br><br>
-    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="index.php">Front page</a></small>
- </body>
+    <p><small><b>Image:</b> <?php echo $url ?></small></p>
+    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a> | <a href="index.php">Index</a></small>
+ </center></body>
  </html>

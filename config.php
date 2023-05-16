@@ -1,5 +1,5 @@
 <?php
-  $site_name  = "Localnet News Portal";
+  $site_name  = "Localnet Newsfeed";
   $site_title = $site_name;
   $base_style = "
   a             { color: RoyalBlue;    }
@@ -14,4 +14,5 @@
   
   .no-border { border: none; }
   ";
+  $stylesheet = "res/style.css";
 ?>
