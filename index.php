@@ -8,21 +8,17 @@ if(array_key_exists('query', $any_params)) {
 
 require_once('vendor/autoload.php');
 require_once('config.php');
+require_once('modules.php');
+require_once('functions.php');
 
 $section="";
 $loc = "US";
 $lang = "en";
 $feed_url="";
 
-if(isset( $_GET['section'])) {
-    $section = $_GET["section"];
-}
-if(isset( $_GET['loc'])) {
-    $loc = strtoupper($_GET["loc"]);
-}
-if(isset( $_GET['lang'])) {
-    $lang = $_GET["lang"];
-}
+if(isset( $_GET['section'])) { $section = $_GET["section"]; }
+if(isset( $_GET['loc'])) { $loc = strtoupper($_GET["loc"]); }
+if(isset( $_GET['lang'])) { $lang = $_GET["lang"]; }
 
 if($section) {
 	$feed_url="https://news.google.com/news/rss/headlines/section/topic/".strtoupper($section)."?ned=".$loc."&hl=".$lang;
@@ -30,45 +26,25 @@ if($section) {
 	$feed_url="https://news.google.com/rss?gl=".$loc."&hl=".$lang."-".$loc."&ceid=".$loc.":".$lang;
 }
 
-//https://news.google.com/news/rss/headlines/section/topic/CATEGORYNAME?ned=in&hl=en
 $feed = new SimplePie();
- 
-// Set the feed to process.
 $feed->set_feed_url($feed_url);
-
-// Initialize and set feed cache directory
 if (!is_dir('cache')) { mkdir('cache', 0755, true); }
 $feed->set_cache_location('cache');
- 
-// Run SimplePie.
 $feed->init();
- 
-// This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
-$feed->handle_content_type();
-
-//replace chars that old machines probably can't handle
-function clean_str($str) {
-    $str = str_replace( "‘", "'", $str );    
-    $str = str_replace( "’", "'", $str );  
-    $str = str_replace( "“", '"', $str ); 
-    $str = str_replace( "”", '"', $str );
-    $str = str_replace( "–", '-', $str );
-	$str = str_replace( '&nbsp;', ' - ', $str );
-
-    return $str;
-}
- 
+$feed->handle_content_type(); // make sure content is sent properly
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 2.0//EN">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 2.0//EN">
 <html>
 <head>
 	<title><?php echo $site_name ?></title>
+  <?php echo $metadata ?>
+  <style><!--
+  <?php echo $base_style  ?>
+  //--></style>
 </head>
 <body>
-	<center><h1><?php echo $site_title ?></h1></center>
-	<hr>
+  <?php echo $header ?>
 	<?php
 	if($section) {
 		$section_title = explode(" - ", strtoupper($feed->get_title()));
@@ -104,5 +80,6 @@ function clean_str($str) {
 			<p><small>Posted on <?php echo $item->get_date('j F Y | g:i a'); ?></small></p>
  
 	<?php endforeach; ?>
+  <?php echo $footer ?>
 </body>
 </html>
