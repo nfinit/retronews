@@ -2,25 +2,27 @@
 
 require_once('config.php');
 
-$loc = "US";
-
 if( isset( $_GET['loc'] ) ) {
     $loc = $_GET["loc"];
 }
 
+require_once('modules.php');
+
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 2.0//EN">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <html>
 <head>
 	<title><?php echo $site_name ?> (Choose edition)</title>
+  <?php echo $metadata ?>
+  <?php echo $legacy_style ?>
 </head>
 <body>
-    <center><h1><?php echo $site_title ?></h1></center>
-    <hr>
+    <?php echo $header ?>
     <center>
-    <p><h2>CHOOSE YOUR EDITION:</h2></p>
+    <p><h2>EDITIONS</h2></p>
     <p><a href='index.php?section=nation&loc=US'>United States</a></p>
     <p><a href='index.php?section=nation&loc=JP'>Japan</a></p>
     <p><a href='index.php?section=nation&loc=UK'>United Kingdom</a></p>
@@ -49,6 +51,6 @@ if( isset( $_GET['loc'] ) ) {
     <p><a href='index.php?section=nation&loc=PT'>Portugal</a></p>
     <p><a href='index.php?section=nation&loc=PK'>Pakistan</a></p>
     </center>
-    <small><a href="index.php?loc=<?php echo $loc ?>">< Back to <font color="#9400d3">68k.news</font> <?php echo $loc ?>front page</a></small>
+    <?php echo $footer ?>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+require_once('config.php');
 header("X-Robots-Tag: noindex, nofollow", true);
 $url = "";
 $filetype = "";
@@ -27,17 +28,29 @@ if (strpos($url, ".jpg") || strpos($url, ".jpeg") === true) {
     exit();
 }
 
-$dest_imagex = 300;
-$dest_imagey = 200;
+$src_imagex = imagesx($raw_image);
+$src_imagey = imagesy($raw_image);
+$src_aspect = $src_imagex/$src_imagey;
+if ($src_imagex < $img_maxwidth) { 
+  $dest_imagex = $src_imagex; 
+} else {
+  $dest_imagex = $img_maxwidth;
+}
+$dest_imagey = $dest_imagex/$src_aspect;
 $dest_image = imagecreatetruecolor($dest_imagex, $dest_imagey);
 
-imagecopyresized($dest_image, $raw_image, 0, 0, 0, 0, $dest_imagex, $dest_imagey, imagesx($raw_image), imagesy($raw_image));
+imagecopyresized($dest_image, $raw_image, 0, 0, 0, 0, $dest_imagex, $dest_imagey, $src_imagex, $src_imagey);
 
+/*
 header('Content-type: image/' . $filetype); 
 if ($filetype = "jpg") {
     imagejpeg($dest_image,NULL,80); //80% quality
 } elseif ($filetype = "png") {
     imagepng($dest_image,NULL,8); //80% compression
 }
+*/
+
+header('Content-type: image/gif');
+imagegif($dest_image);
 
 ?>

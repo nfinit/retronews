@@ -10,15 +10,44 @@ $metadata = "
 if (file_exists($stylesheet)) { 
   $metadata = $metadata . "<link rel=\"stylesheet\" href=\"" . $stylesheet . "\">\n"; 
 }
+// Legacy style
+$legacy_style = "
+  <style><!--
+  $inline_style
+  //--></style>
+";
 // Standard header
 $header = "
-  <center><h1>$site_title</h1>
-  <small>Prepared $generated_time</small></center>
-  <hr>
+  <div id=\"header\">
+    <center><h1>$site_title</h1>
+    <p>$generated_time</p>
+    <hr>
+  </div>
 ";
 // Standard footer
 $footer = "
-  <hr>
-  <center><p><small>Prepared $generated_time on $system_hostname</small></p></center>
+  <div id=\"footer\">
+    <hr>
+    <p><small>
+      <a href=\"index.php\">$site_name</a>  
+      generated $generated_time on $system_hostname
+    </small></p>
+  </div>
+";
+// Feedbar
+$feedbar = "
+    <center>
+    <b><a href=\"choose_edition.php\">$loc EDITION</a></b> |
+    <a href=\"index.php?loc=$loc\">TOP</a> 
+    <a href=\"index.php?section=world&loc=$loc\">WORLD</a> 
+    <a href=\"index.php?section=nation&loc=$loc\">NATION</a> 
+    <a href=\"index.php?section=business&loc=$loc\">BUSINESS</a> 
+    <a href=\"index.php?section=technology&loc=$loc\">TECHNOLOGY</a> 
+    <a href=\"index.php?section=entertainment&loc=$loc\">ENTERTAINMENT</a> 
+    <a href=\"index.php?section=sports&loc=$loc\">SPORTS</a> 
+    <a href=\"index.php?section=science&loc=$loc\">SCIENCE</a> 
+    <a href=\"index.php?section=health&loc=$loc\">HEALTH</a><br>
+    <hr>
+    </center>
 ";
 ?>

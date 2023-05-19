@@ -40,9 +40,7 @@
 <head>
   <title><?php echo $site_name . ' (Image Viewer)' ?></title>
   <?php echo $metadata ?>
-  <style><!--
-  <?php echo $base_style ?>
-  //--></style>    
+  <?php echo $legacy_style ?>
 </head>
 <body><center>
     <img src="image_compressed.php?i=<?php echo $url; ?>">
